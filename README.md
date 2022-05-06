@@ -1,2 +1,2 @@
 # rockpaperscissors project from TOP
-![Rock Paper Scizzors] <iframe src="https://giphy.com/embed/A6jVdKALdZO0M" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/reactionseditor-queen-champion-A6jVdKALdZO0M"></a></p>
+![Rock Paper Scizzors] https://media0.giphy.com/media/A6jVdKALdZO0M/giphy.gif?cid=ecf05e47eyqs2n3hzincy0awm028hofgwyzcupuwl0zxbgl4&rid=giphy.gif
