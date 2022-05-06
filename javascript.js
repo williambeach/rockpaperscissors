@@ -59,9 +59,13 @@ function playGame() {
     alert(`Computer Score: ${computerScore} Human Score: ${humanScore}`);
     if (computerScore > humanScore) {
         alert('Better luck next time...');
+    } else if (computerScore == humanScore) {
+        alert('You tied, oh well...')
     } else {
         alert('CONGRATULATIONS');
     }
+        
+    
     
 }
 
@@ -69,8 +73,3 @@ playGame();
 
 
 
-
-/*userInput = prompt("Please enter: rock, paper, or scissors.");
-    userInput = userInput.toLowerCase()
-    while (userInput !== 'rock' || userInput !== 'paper' || userInput !== 'scissors') {
-    userInput = prompt('That was not an answer, please enter "rock", "paper", or "scissors" ');*/
