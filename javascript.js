@@ -1,16 +1,51 @@
 /* function computerPlay() will randomly generate rock, paper, or scissors
 and return it as a string*/
 
+let numClicked = 0;
+
+
+function showDiv () { //this will show scoreboard and buttons once start button is clicked
+    document.getElementById("appear").style.display = "Block";
+}
+function playUfo () { //this will start ufo sound wav once start button is clicked
+    const audio = document.querySelector('audio[data-key="ufo"]');
+    audio.play();
+}
+
+const startButton = document.getElementById('start_button'); //find startButton in html
+startButton.addEventListener('click', () => { //listen for startButton click and execute the following functions:
+    playUfo();
+    showDiv();
+    startButton.textContent = `Round ${numClicked}`;
+});
 
 
 
-/*function computerPlay() {
+function computerPlay() { 
     randomNum = Math.floor((Math.random() * 1000));
     return (randomNum >= 0 && randomNum <= 333) ? 'rock' : (randomNum > 333 &&
         randomNum <= 666) ? 'paper' : 'scissors';
 }
 
-function playGame() {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*function playGame() {
     let humanScore = 0;
     let computerScore = 0;
     alert("Hello and welcome to....");

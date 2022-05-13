@@ -74,14 +74,28 @@ body {
     justify-content: space-between;
 }
 
+@keyframes slideleft {
+    from {
+        margin-left: 100%;
+    }
+    to {
+        margin-left: 10%;
+    }
+}
+
+.header {
+    animation-duration: 2s;
+    animation-name: slideleft;
+}
 .right {
     color: white;
-    flex: 0 0 65%;
+    flex: 1 0 65%;
     text-align: center;
     font-weight: bold;
     margin-top: 15px;
     font-style: italic;
-
+    display: flex;
+    flex-direction: column;
 }
 
 .buttons {
@@ -101,6 +115,7 @@ body {
     flex-direction: column;
     flex: 0 0 35%;
     row-gap: 40px;
+    display: none;
 }
 
 .rock, .paper, .scissors {
@@ -113,3 +128,29 @@ body {
     background-image: url("./pictures/rock.jpg");
     background-size: 100%;
 }
+
+.paper {
+    background-image: url("./pictures/paperplane.png");
+    background-size: 100%;
+}
+
+.scissors {
+    background-image: url("./pictures/scissors.png");
+    background-size: 100%;
+}
+
+    
+
+.start {
+    align-self: center;
+    margin: auto;
+    width: 200px;
+    height: 50px;
+    border-radius: 10px;
+    border: solid 2px gold;
+    background-color: rgba(221,215,215,0.4);
+    font-size: 36px;
+    animation-duration: 2s;
+    animation-name: slideleft
+}
+
