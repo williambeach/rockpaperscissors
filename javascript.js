@@ -1,10 +1,13 @@
 /* function computerPlay() will randomly generate rock, paper, or scissors
 and return it as a string*/
 
-function computerPlay() {
-    randomNum = Math.floor((Math.random() * 100));
-    return (randomNum >= 0 && randomNum <= 33) ? 'rock' : (randomNum >= 34 &&
-        randomNum <= 66) ? 'paper' : 'scissors';
+
+
+
+/*function computerPlay() {
+    randomNum = Math.floor((Math.random() * 1000));
+    return (randomNum >= 0 && randomNum <= 333) ? 'rock' : (randomNum > 333 &&
+        randomNum <= 666) ? 'paper' : 'scissors';
 }
 
 function playGame() {
@@ -64,12 +67,9 @@ function playGame() {
     } else {
         alert('CONGRATULATIONS');
     }
-        
-    
-    
 }
 
-playGame();
+playGame();*/
 
 
 
