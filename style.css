@@ -23,6 +23,11 @@ body {
     width: 55px;
     height: 75px;
     border: solid 1px yellow;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     
 }
 .score {
@@ -87,6 +92,8 @@ body {
     animation-duration: 2s;
     animation-name: slideleft;
 }
+
+
 .right {
     color: white;
     flex: 1 0 65%;
@@ -118,23 +125,23 @@ body {
     display: none;
 }
 
-.rock, .paper, .scissors {
+#rock, #paper, #scissors {
     width: 100px;
     height: 100px;
     border-radius: 10px;
 }
 
-.rock {
+#rock {
     background-image: url("./pictures/rock.jpg");
     background-size: 100%;
 }
 
-.paper {
+#paper {
     background-image: url("./pictures/paperplane.png");
     background-size: 100%;
 }
 
-.scissors {
+#scissors {
     background-image: url("./pictures/scissors.png");
     background-size: 100%;
 }
