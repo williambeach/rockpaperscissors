@@ -41,7 +41,6 @@ function getAlienMove() {
         randomNum <= 666) ? 'paper' : 'scissors';
 }
 
-
 function setRound() {
     startButton.textContent = `Round ${round}`;   
 }
@@ -89,10 +88,6 @@ function endGame() {
     document.querySelector('.buttons').style.display = "none";
 }
 
-
-
-start();
-
 async function waitForClick() {
     return new Promise(resolve => {
         for (let i=0; i<choices.length;i++) {
@@ -122,19 +117,21 @@ async function playGame() {
             pointHumans();
         }
         updateRound();
+        if (round == 5) {
+            endGame();
+        }
     }
 }
+    
 
 
 
 
+
+
+start();
 
 playGame();
-
-
-
-
-
 
 
 
