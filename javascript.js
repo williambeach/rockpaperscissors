@@ -1,7 +1,3 @@
-/* function computerPlay() will randomly generate rock, paper, or scissors
-and return it as a string*/
-
-
 let round = 1;
 let counter = 0;
 alienScore = 0;
@@ -17,6 +13,12 @@ const scissorsButton = document.getElementById('scissors');
 const humanScreenScore = document.getElementById('humanScore');
 const alienScreenScore = document.getElementById('alienScore');
 const choices = document.querySelectorAll('.choices');
+const endOfGameHeader = document.createElement("div");
+endOfGameHeader.style.fontWeight = 'bold';
+endOfGameHeader.style.color = 'white';
+endOfGameHeader.style.textAlign = 'center';
+endOfGameHeader.style.fontStyle = 'italic';
+
 
 
 
@@ -41,14 +43,13 @@ function getAlienMove() {
         randomNum <= 666) ? 'paper' : 'scissors';
 }
 
-
 function setRound() {
     startButton.textContent = `Round ${round}`;   
 }
 
 function updateRound() {
     round += 1;
-    setTimeout(setRound, 2600);
+    setTimeout(setRound, 2300);
 }
      
     
@@ -58,18 +59,18 @@ function fillHeader() {
 
 function headerWin() {
     header.textContent = `The aliens played ${alienMove}. Excellent choice, we may be saved afterall...`;
-    setTimeout(fillHeader,2500);
+    setTimeout(fillHeader,2000);
 }
 
 function headerLose() {
     header.textContent = `The aliens played ${alienMove}. You lost this round...`;
-    setTimeout(fillHeader,2500);
+    setTimeout(fillHeader,2000);
     }
 
 
 function headerTie() {
     header.textContent = `The aliens and you both played ${alienMove}. It's a tie.`;
-    setTimeout(fillHeader,2500);
+    setTimeout(fillHeader,2000);
     }
 
 
@@ -83,26 +84,24 @@ function pointAliens () {
     alienScreenScore.textContent = `${alienScore}`;
 }
 
-function endGame() {
+function endGame(humanScore, alienScore) {
     startButton.style.display = "none";
-    header.textContent = `Final Score ** Humans: ${humanScore} ** Aliens: ${alienScore}`;
     document.querySelector('.buttons').style.display = "none";
+    endOfGameHeader.textContent = `Final Score ** Humans: ${humanScore} ** Aliens: ${alienScore}`;
+    header.replaceWith(endOfGameHeader);
+
 }
-
-
-
-start();
 
 async function waitForClick() {
     return new Promise(resolve => {
         for (let i=0; i<choices.length;i++) {
             choices[i].addEventListener('click', resolve);
         }
-        });
+    });
 }
     
 async function playGame() {
-    for (let i = 0; i < 4; ++i) {
+    for (let i = 0; i < 5; ++i) {
         alienMove = getAlienMove();
         value = await waitForClick();
         userInput = value.target.id;
@@ -122,13 +121,14 @@ async function playGame() {
             pointHumans();
         }
         updateRound();
+        if (round > 5) {
+            endGame(humanScore, alienScore);
+        }
     }
 }
 
 
-
-
-
+start();
 playGame();
 
 
@@ -141,76 +141,6 @@ playGame();
 
 
 
-
-
-
-
-
-
-
-
-
-
-/*function playGame() {
-    let humanScore = 0;
-    let computerScore = 0;
-    alert("Hello and welcome to....");
-    alert("ROCK, PAPER, SCISSORSSSSSSSSS...Best of 5 rounds!!!!");
-    for (i = 0; i < 5; i++) {
-        computerAnswer = computerPlay();
-        userInput = prompt("Please enter: rock, paper, or scissors.");
-        userInput = userInput.toLowerCase()
-        while (userInput !== 'rock' && userInput !== 'paper' && userInput !== 'scissors') {
-            userInput = prompt('That was not an answer, please enter "rock", "paper", or "scissors."');
-        }
-    
-        if (computerAnswer == 'rock' && userInput == 'scissors') {
-            computerScore += 1;
-            alert("Computer played Rock, rock beats scissors, you lost this round");
-            
-        } else if (computerAnswer == 'rock' && userInput == 'paper') {
-            humanScore += 1;
-            alert("Computer played Rock, but paper beats rock, you won this round");
-            
-        } else if (computerAnswer == 'rock' && userInput == 'rock') {
-            alert("Computer played Rock, you played rock, it's a tie");
-            
-        } else if (computerAnswer == 'paper' && userInput == 'rock') {
-            computerScore += 1;
-            alert("Computer played paper, paper beats rock, you lost this round");
-            
-        } else if (computerAnswer == 'paper' && userInput == 'scissors') {
-            humanScore += 1;
-            alert("Computer played paper, scissors beat paper, you won this round");
-            
-        } else if (computerAnswer == 'paper' && userInput == 'paper') {
-            alert("Computer played paper, you played paper, it's a tie");
-            
-        } else if (computerAnswer == 'scissors' && userInput == 'rock') {
-            humanScore += 1
-            alert('Computer played scissor, rock beats scissor, you win this round');
-            
-        } else if (computerAnswer == 'scissors' && userInput == 'paper') {
-            computerScore += 1;
-            alert('Computer played scissors, scissors beats paper, you lost this round');
-            
-        } else if (computerAnswer == 'scissors' && userInput == 'scissors') {
-            alert("Computer played scissors, you played scissors, it's a tie");
-            
-        }
-        
-    }
-    alert(`Computer Score: ${computerScore} Human Score: ${humanScore}`);
-    if (computerScore > humanScore) {
-        alert('Better luck next time...');
-    } else if (computerScore == humanScore) {
-        alert('You tied, oh well...')
-    } else {
-        alert('CONGRATULATIONS');
-    }
-}
-
-playGame();*/
 
 
 
