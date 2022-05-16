@@ -1,7 +1,3 @@
-/* function computerPlay() will randomly generate rock, paper, or scissors
-and return it as a string*/
-
-
 let round = 1;
 let counter = 0;
 alienScore = 0;
@@ -17,6 +13,12 @@ const scissorsButton = document.getElementById('scissors');
 const humanScreenScore = document.getElementById('humanScore');
 const alienScreenScore = document.getElementById('alienScore');
 const choices = document.querySelectorAll('.choices');
+const endOfGameHeader = document.createElement("div");
+endOfGameHeader.style.fontWeight = 'bold';
+endOfGameHeader.style.color = 'white';
+endOfGameHeader.style.textAlign = 'center';
+endOfGameHeader.style.fontStyle = 'italic';
+
 
 
 
@@ -47,7 +49,7 @@ function setRound() {
 
 function updateRound() {
     round += 1;
-    setTimeout(setRound, 2600);
+    setTimeout(setRound, 2300);
 }
      
     
@@ -57,18 +59,18 @@ function fillHeader() {
 
 function headerWin() {
     header.textContent = `The aliens played ${alienMove}. Excellent choice, we may be saved afterall...`;
-    setTimeout(fillHeader,2500);
+    setTimeout(fillHeader,2000);
 }
 
 function headerLose() {
     header.textContent = `The aliens played ${alienMove}. You lost this round...`;
-    setTimeout(fillHeader,2500);
+    setTimeout(fillHeader,2000);
     }
 
 
 function headerTie() {
     header.textContent = `The aliens and you both played ${alienMove}. It's a tie.`;
-    setTimeout(fillHeader,2500);
+    setTimeout(fillHeader,2000);
     }
 
 
@@ -82,10 +84,12 @@ function pointAliens () {
     alienScreenScore.textContent = `${alienScore}`;
 }
 
-function endGame() {
+function endGame(humanScore, alienScore) {
     startButton.style.display = "none";
-    header.textContent = `Final Score ** Humans: ${humanScore} ** Aliens: ${alienScore}`;
     document.querySelector('.buttons').style.display = "none";
+    endOfGameHeader.textContent = `Final Score ** Humans: ${humanScore} ** Aliens: ${alienScore}`;
+    header.replaceWith(endOfGameHeader);
+
 }
 
 async function waitForClick() {
@@ -93,11 +97,11 @@ async function waitForClick() {
         for (let i=0; i<choices.length;i++) {
             choices[i].addEventListener('click', resolve);
         }
-        });
+    });
 }
     
 async function playGame() {
-    for (let i = 0; i < 4; ++i) {
+    for (let i = 0; i < 5; ++i) {
         alienMove = getAlienMove();
         value = await waitForClick();
         userInput = value.target.id;
@@ -117,23 +121,15 @@ async function playGame() {
             pointHumans();
         }
         updateRound();
-        if (round == 5) {
-            endGame();
+        if (round > 5) {
+            endGame(humanScore, alienScore);
         }
     }
 }
-    
-
-
-
-
 
 
 start();
-
 playGame();
-
-
 
 
 
